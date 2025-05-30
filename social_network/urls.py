@@ -20,13 +20,12 @@ from rest_framework.routers import DefaultRouter
 from posts.views import PostViewSet, CommentViewSet, LikeViewSet
 
 
-
-router = DefaultRouter()# регистрация маршрутов
-router.register(r'posts', PostViewSet)# регистрация маршрутов для постов
-router.register(r'comments', CommentViewSet)# регистрация маршрутов для комментариев
-router.register(r'likes', LikeViewSet)# регистрация маршрутов для лайков
+router = DefaultRouter()  # регистрация маршрутов
+router.register(r'posts', PostViewSet)  # регистрация маршрутов для постов
+router.register(r'comments', CommentViewSet)  # регистрация маршрутов для ком.
+router.register(r'likes', LikeViewSet)  # регистрация маршрутов для лайков
 
 urlpatterns = [
-    path('admin/', admin.site.urls),# админ панель
-    path('api/', include(router.urls)),# регистрация маршрутов
+    path('admin/', admin.site.urls),  # админ панель
+    path('api/', include(router.urls)),  # регистрация маршрутов
 ]

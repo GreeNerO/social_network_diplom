@@ -31,6 +31,15 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+6. Создайте файл `.env` в корневой директории проекта и добавьте следующие переменные окружения:
+DEBUG=
+SECRET_KEY=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+
 5. Запустите сервер разработки:
 ```bash
 python manage.py runserver

@@ -20,12 +20,17 @@ User = get_user_model()
 #   "likes_count": 20
 # }
 
-# модель поста
+
+#  модель поста
 class Post(models.Model):
     text = models.TextField()
     image = models.ImageField(upload_to='posts/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='posts'
+    )
 
     def __str__(self):
         return f"Post by {self.author.username} at {self.created_at}"
@@ -33,8 +38,16 @@ class Post(models.Model):
 
 # модель комментария
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -44,8 +57,16 @@ class Comment(models.Model):
 
 # модель лайка
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='likes'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='likes'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -57,4 +78,3 @@ class Like(models.Model):
 
 # для доп. задания
 # class PostImage(models.Model):
-#     ...
